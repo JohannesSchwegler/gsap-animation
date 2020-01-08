@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <script src="https://unpkg.com/swup@latest/dist/swup.min.js"></script>
+    <title>Document</title>
+</head>
+
+
+<body style="margin:0;">
+
+
+
+    <main id="swup" class="transition-fade">
+        <div class="container">
+            <a href="/page2/page2.html" class="item">
+                <div style="background: url(./bg1.jpg);" class="bg"></div>
+                <span> Test</span>
+            </a>
+
+        </div>
+    </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenLite.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TimelineMax.min.js"></script>
+    <script src="node_modules/@swup/js-plugin/dist/SwupJsPlugin.min.js"></script>
+
+    <script>
+
+
+
+            const options = [
+                {
+                    from: '(.*)',
+                    to: '(.*)',
+                    in: function (next) {
+                        var t = new TimelineMax();
+                        t.fromTo('body', 2, {
+                            opacity: 1,
+
+
+                        },
+                            {
+                                opacity: 0,
+                                onComplete: () => {
+                                    console.log("fertig")
+                                    next
+
+                                }
+                            })
+
+                    },
+                    out: (next) => {
+                        var t = new TimelineMax();
+                        t.fromTo('body', 2, {
+                            opacity: 0,
+
+
+                        },
+                            {
+                                opacity:1,
+                                onComplete: () => {
+                                    next
+                                }
+                            })
+                    }
+                }
+            ];
+
+            const swup = new Swup({
+                plugins: [new SwupJsPlugin(options)]
+            });
+
+
+  
+
+
+
+
+    </script>
+
+
+</body>
+
+
+</html>
